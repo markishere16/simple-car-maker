@@ -1,6 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/login.js": "/js/login.js",
+    "/js/manufacturer.js": "/js/manufacturer.js",
+    "/js/carColor.js": "/js/carColor.js",
     "/css/app.css": "/css/app.css",
-    "/js/mainApp.js": "/js/mainApp.js",
-    "/js/login.js": "/js/login.js"
+    "/js/car_type.js": "/js/car_type.js",
+    "/js/cars.js": "/js/cars.js"
 }

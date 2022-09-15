@@ -107,7 +107,6 @@ class ItemController extends Controller
             $existingItem->delete();
             return "Item Successfully Deleted!";
         }
-
         
         return "item not found";
 
