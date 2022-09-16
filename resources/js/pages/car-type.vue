@@ -22,6 +22,7 @@
             v-on:openEditDialog="openEditDialog"
             v-on:openDeleteDialog="openDeleteDialog"
             :key="ComponentKey"
+            :loading="loading"
             :car_types="$store.getters.get_car_types"
             />
            
@@ -60,6 +61,7 @@
                 dialog: false,
                 selected_car_type: null,
                 action_type:'',
+                loading: true,
             }
         },
         components: {
@@ -71,6 +73,9 @@
     
         mounted() {
             this.$store.dispatch('fetchCarTypes')
+            .then(()=>{
+                this.loading = false;
+            })
         },
         methods: {
             closeDialog() {

@@ -1,6 +1,5 @@
 require('./bootstrap');
 
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import Vue from 'vue';
 import store from "./store/store";
 import VueRouter from 'vue-router'
@@ -10,12 +9,14 @@ import Toasted from 'vue-toasted';
 
 Vue.use(Toasted);
 Vue.use(VueRouter);
-Vue.component('app', require('./mainApp.vue').default);
+
+
+Vue.component('app', require('./App.vue').default);
 
 const app = new Vue({
     el: '#app',
-    vuetify,
     store,
+    vuetify,
     router: new VueRouter(routes),
   
 })

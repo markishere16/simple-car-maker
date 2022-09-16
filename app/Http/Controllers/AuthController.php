@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function login(Request $request){
 
         $request->validate([
-            'email' => ['required'],
+            'email' =>'required|max:255|email',
             'password' => ['required']
         ]);
 
@@ -36,30 +36,6 @@ class AuthController extends Controller
         }
     }
 
-    public function register(Request $request){
-     
-        $request->validate([
-            'name' => ['required'],
-            'email' => ['required'],
-            'password' => ['required']
-        ]);
-
-        $verifyEmail = User::where('email',$request->email)->count();
-
-        if($verifyEmail > 0) {
-            return ['success'=>false,'message'=> 'Email is already taken'];
-        } 
-
-         
-        $New = User::create([
-            'name' =>  $request->name,
-            'email' =>  $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return ['success'=>true,'message'=> 'Your account have been successfully created!'];
-
-    }
 
     public function logout(Request $request) {
 

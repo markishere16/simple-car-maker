@@ -9,7 +9,7 @@
         >
             <v-card-title>
                 <span class="text-h5">
-                    {{action_type == 'add' ? 'Add Type' : 'Edit Type'}}
+                    {{action_type == 'add' ? 'Add Car' : 'Edit Car'}}
                 </span>
             </v-card-title>
             <v-card-text>
@@ -65,15 +65,16 @@
             </v-card-actions>
         </v-form>
 
-        
     </v-card>
 
 </div>
 </template>
 
 <script>
+import { debounce } from 'lodash';
 
 export default {
+    
     props: ['action_type','car'],
     data() {
         return {
@@ -95,7 +96,13 @@ export default {
     },
     mounted() {
         if (this.action_type == 'edit') {
-            this.form_data = this.car;
+            this.form_data.id =  this.car.id;
+            this.form_data.name = this.car.name;
+            this.form_data.manufacturer = this.car.manufacturer;
+            this.form_data.color = this.car.color;
+            this.form_data.type = this.car.type;
+      
+        
         } else {
             this.resetForm();
         }
@@ -128,6 +135,7 @@ export default {
                 }).then(() => {
                         this.isloading = false;
                         this.$emit('closeDialog');
+                        
                 });
             } else {
                 this.form_data.id = this.car.id;

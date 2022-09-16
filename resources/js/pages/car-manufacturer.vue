@@ -21,6 +21,7 @@
         v-on:openEditDialog="openEditDialog"
         v-on:openDeleteDialog="openDeleteDialog"
         :key="ComponentKey"
+        :loading="loading"
         :manufacturers="$store.getters.get_manufacturers"
         />
        
@@ -59,6 +60,7 @@ export default {
             dialog: false,
             selected_manufacturer: null,
             action_type:'',
+            loading: true
         }
     },
     components: {
@@ -70,6 +72,9 @@ export default {
 
     mounted() {
         this.$store.dispatch('fetchManufacturers')
+        .then(()=>{
+                this.loading = false;
+            })
     },
     methods: {
         closeDialog() {

@@ -1,4 +1,3 @@
-
 <template>
 
 
@@ -7,9 +6,11 @@
             <v-row justify="center">
                 <v-col class="mainComponent d-flex align-center" cols="12">
                     <v-row justify="center">
-                        <v-col class="text-center" cols="12" lg="3" md="4">
+                        <v-col class="text-center" cols="12" lg="3" sm="6" md="6">
                             <v-card elevation="6" class="pa-8">
-                            
+                                <h2>Car Maker Web App</h2>
+                                <span>by: Mark Joshua Mandigma</span>
+
                                 <v-divider class="my-4"></v-divider>
                                 <v-form ref="form" @submit.prevent="validate" v-model="valid" lazy-validation>
                                     <v-text-field :rules="username_rules" type="email" v-model="form_data.email"
@@ -21,7 +22,7 @@
                                     <v-btn :loading="isloading" :disabled="!valid || isloading" block rounded
                                         class="mb-3 mt-2 pt-5 pb-5" type="submit" color="primary">Login</v-btn>
 
-                                    <router-link :to="{name: 'sign_up'}"> Sign Up Here</router-link>
+
                                 </v-form>
                             </v-card>
                         </v-col>
@@ -33,10 +34,6 @@
 </template>
 
 <script>
-    import {
-        mapGetters
-    } from 'vuex'
-
     export default {
         data() {
             return {
@@ -56,11 +53,6 @@
                 show: false,
             }
         },
-        computed: {
-            ...mapGetters([
-                'IsAuthenticated_data',
-            ]),
-        },
 
         methods: {
             validate() {
@@ -77,7 +69,7 @@
                     axios.post('/api/auth/login', this.form_data).then((res) => {
                         this.tmpMessage = res.data;
                         if (res.data.success) {
-                            // this.IsAuthenticated_data = true;
+
                             this.$router.push({
                                 path: "/"
                             });
@@ -96,11 +88,23 @@
             },
 
 
-            fetchSubscription() {
-                axios.get('/api/user_subscriber').then((res) => {
-                    this.tmpMessage = res.data;
+
+            toastSuccess(message) {
+                this.$toasted.success(message, {
+                    position: 'top-center',
+                    duration: 5000,
+                    icon: "check",
                 })
-            }
+            },
+
+            toastError(message) {
+                this.$toasted.error(message, {
+                    position: 'top-center',
+                    duration: 5000,
+                    icon: "warning",
+                })
+            },
+
         },
 
     }

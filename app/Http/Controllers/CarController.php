@@ -142,7 +142,7 @@ class CarController extends Controller
 
     }
 
-    public function fetchCarProperties() {
+    public function CarProperties() {
         $CarManufacturer = CarManufacturer::select('id','name')->get();
         $CarType = CarType::select('id','name')->get();
         $CarColor = CarColor::select('id','name')->get();
@@ -151,6 +151,21 @@ class CarController extends Controller
             'manufacturers'=> $CarManufacturer, 
             'types'=>$CarType,
             'colors'=>$CarColor
+        ];
+
+    }
+
+    public function CarPropertiesCount() {
+        $Car = Car::count();
+        $CarManufacturer = CarManufacturer::count();
+        $CarType = CarType::count();
+        $CarColor = CarColor::count();
+
+        return [
+            'total_cars'=> $Car, 
+            'total_manufacturers'=> $CarManufacturer, 
+            'total_types'=>$CarType,
+            'total_colors'=>$CarColor
         ];
 
     }

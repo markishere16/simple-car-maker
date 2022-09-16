@@ -15,7 +15,7 @@
             <!-- <v-app-bar :clipped-left="$vuetify.breakpoint.mdAndUp" app color="primary" dark> -->
             <v-toolbar color="blue darken-3" class="pl-0" style="padding:0px !important">
                 <v-toolbar-title class="ml-0 pl-0 d-flex align-center">
-                    RemotePro.PH | Car Maker Website
+                    RemotePro.PH | Car Maker Website by: Mark Joshua Elimar Mandigma
                 </v-toolbar-title>
       
                 <v-spacer></v-spacer>
@@ -28,7 +28,12 @@
                         </v-btn>
                     </template>
                     <v-list class="pa-0">
-
+   
+                        <v-list-item  >
+                            <v-list-item-title dense>
+                             Hi, {{$store.getters.get_CurrentUser.name}}
+                            </v-list-item-title>
+                        </v-list-item>
                         <v-list-item link tile @click="logout">
                             <v-list-item-title dense>
                                 <v-icon>mdi-logout</v-icon> Log out
@@ -58,9 +63,7 @@
 <script>
     import navigation from './navigation.vue'
 
-    import {
-        mapGetters
-    } from "vuex";
+ 
     export default {
         components: {
             navigation
@@ -69,21 +72,17 @@
             drawer: true
         }),
 
-        async mounted() {
-            
-            // await this.$store.dispatch('fetchSubscription')
-
-        },
         methods: {
             logout() {
                 axios.post('/api/auth/logout')
                     .then(() => {
-                        location.reload();
                         this.$router.push({
                             path: "/login"
                         })
                     })
-                    .catch((e) => {})
+                    .catch((e) => {
+                        alert('something went wrong')
+                    })
             },
         },
     }

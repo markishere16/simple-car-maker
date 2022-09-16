@@ -13,12 +13,10 @@ const actions = {
         const res = await axios.get(`/api/authenticated`)
         .catch((e) => {
             commit('SET_AUTHENTICATED', false);
-            window.localStorage.removeItem('is_authenticated');
         })
        
         if (res.data == 1) {
             window.localStorage.setItem('is_authenticated', true);
-            commit('SET_AUTHENTICATED', true);
         }
       
     return res.data;

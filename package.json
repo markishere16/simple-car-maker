@@ -11,13 +11,19 @@
     },
     "devDependencies": {
         "axios": "^0.21",
+        "deepmerge": "^4.2.2",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
-        "vue-loader": "^15.9.5",
-        "vue-template-compiler": "^2.6.12"
+        "sass": "~1.32.6",
+        "sass-loader": "^11.1.1",
+        "vue-loader": "^15.9.58",
+        "vue-template-compiler": "^2.6.12",
+        "vuetify-loader": "^1.9.2",
+        "vuetifyjs-mix-extension": "^0.0.20"
     },
     "dependencies": {
+        "debounce": "^1.2.1",
         "material-design-icons-iconfont": "^6.7.0",
         "vue": "^2.6.12",
         "vue-moment": "^4.1.0",

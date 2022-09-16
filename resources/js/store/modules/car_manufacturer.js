@@ -79,7 +79,12 @@ const actions = {
                 actions.toastSuccess(vm,res.data.message);
             })
             .catch(error => {
-                actions.toastError(vm,error.response.data.message);
+                if(error.response.status == '500') {
+                    actions.toastError(vm,`Unable to delete "${payload.name}" it was referenced in Car`);
+                } else {
+                    actions.toastError(vm,error.response.data.message);
+                }
+               
             })
     },
 

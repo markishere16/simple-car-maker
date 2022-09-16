@@ -2,6 +2,14 @@
    
          <v-list nav dense>
                 <v-list-item-group  active-class="deep-primary--text text--accent-4">
+                    
+                    <v-list-item exact link :to="{name: 'dashboard'}" >
+                        <v-list-item-icon>
+                            <v-icon>mdi-view-dashboard</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title>Dashboard</v-list-item-title>
+                    </v-list-item>
+                    
                     <v-list-item exact link :to="{name: 'cars'}" >
                         <v-list-item-icon>
                             <v-icon>mdi-car</v-icon>

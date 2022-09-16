@@ -23,6 +23,7 @@
             v-on:openDeleteDialog="openDeleteDialog"
             :key="ComponentKey"
             :car_colors="$store.getters.get_car_colors"
+            :loading="loading"
             />
            
             
@@ -60,6 +61,7 @@
                 dialog: false,
                 selected_car_color: null,
                 action_type:'',
+                loading: true,
             }
         },
         components: {
@@ -70,7 +72,9 @@
     
     
         mounted() {
-            this.$store.dispatch('fetchCarColors')
+            this.$store.dispatch('fetchCarColors').then(()=>{
+                this.loading = false;
+            })
         },
         methods: {
             closeDialog() {

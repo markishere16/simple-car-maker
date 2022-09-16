@@ -21,6 +21,7 @@
             v-on:openEditDialog="openEditDialog"
             v-on:openDeleteDialog="openDeleteDialog"
             :key="ComponentKey"
+            :loading="loading"
             :cars="$store.getters.get_cars"
             />
            
@@ -32,7 +33,6 @@
              v-on:closeDialog="closeDialog" 
              :action_type="action_type" 
              :car="selected_car" 
-             :key="ComponentKey"
              v-if="action_type != 'delete' && dialog"
              />
     
@@ -40,7 +40,6 @@
              v-on:closeDialog="dialog = !dialog" 
              :action_type="action_type" 
              :car="selected_car" 
-             :key="ComponentKey"
              v-if="action_type == 'delete'  && dialog"
              />
         </v-dialog>
@@ -62,6 +61,7 @@
                 selected_car: null,
                 action_type:'',
                 properties: [],
+                loading: true,
             }
         },
         components: {
@@ -72,13 +72,16 @@
     
     
         mounted() {
-            this.$store.dispatch('fetchCars');
+            this.$store.dispatch('fetchCars').then(()=>{
+                this.loading=false;
+            });
             this.$store.dispatch('fetchCarProperties');
         },
         methods: {
            
             closeDialog() {
                 this.dialog=!this.dialog;
+                this.ComponentKey++;
             },
             openAddDialog() {
                 this.dialog = true;

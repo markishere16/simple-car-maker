@@ -71,7 +71,9 @@ Route::prefix('/car-type')->group(function () {
 
 Route::prefix('/car')->group(function () {
     Route::get('/all',[CarController::class, 'fetchAllCar']);
-    Route::get('/car-properties',[CarController::class, 'fetchCarProperties']);
+    Route::get('/overview',[CarController::class, 'CarPropertiesCount']);
+    Route::get('/checkname/{name}',[CarController::class, 'isNameTaken']);
+    Route::get('/car-properties',[CarController::class, 'CarProperties']);
     Route::post('/insert', [CarController::class, 'insertCar']);
     Route::put('/update', [CarController::class, 'updateCar']);
     Route::delete('/delete/{id}', [CarController::class, 'deleteCar']); 

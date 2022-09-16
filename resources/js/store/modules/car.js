@@ -52,7 +52,6 @@ const actions = {
             }))
             .catch(error => {
                 actions.toastError(vm,error.response.data.message);
-              
             })
 
     },
@@ -82,6 +81,7 @@ const actions = {
             })
             .catch(error => {
                 actions.toastError(vm,error.response.data.message);
+               
             })
     },
 

@@ -1,10 +1,10 @@
 <template>
     <div>
-        <v-data-table :headers="headers" :items="car_types"  :items-per-page="10" class="elevation-1">
+        <v-data-table :headers="headers" :items="car_types"  :loading="loading" :items-per-page="10" class="elevation-1">
             <template v-slot:body="{ items }">
                 <tbody>
                     <tr v-for="car_type in items" :key="car_type.id">
-                        <td class="text-left">{{car_type.id}} </td>
+                    
                         <td class="text-left">
                             {{car_type.name}} </td>
 
@@ -40,16 +40,11 @@
 <script>
 
 export default {
-    props:['car_types'],
+    props:['car_types', 'loading'],
     data() {
         return {
             headers: [
 
-                {
-                    text: 'ID',
-                    value: 'car_type',
-                    align: 'start',
-                },
                 {
                     text: 'Name',
                     value: 'name',
