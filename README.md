@@ -12,7 +12,7 @@ step 5: npm install
 Commands:
 ```
 php artisan serve
-npm run watch / npm run dev
+npm run dev
 ```
 ## For Production
 
