@@ -10,9 +10,10 @@ step 5: npm install
 ## To run the Web App
 
 Commands:
+```
 php artisan serve
 npm run watch / npm run dev
-
+```
 ## For Production
 
 npm run prod
